@@ -18,6 +18,14 @@ function startGame() {
     $("#answers").empty();
 }
 
+function setTimer() {
+
+}
+
+// function changeSlides() {
+//     setTimeout(tenSeconds, 1000 * 10);
+//     myObj.answerQuestion2();
+// }
 
 var myObj = {
     questions : ["What kind of pet does Kevin's older brother, Buzz, have?", "The neighbor that Buzz refers to as a serial killer but ends up helping out Kevin later in the movie is referred to as...", "What is the name of the pizza company that the McCallisters always seem to order from?", "Which character in the movie is a sibling to Kevin in real life?", "Marv refers to him and Harry as the..."],
@@ -62,18 +70,28 @@ var myObj = {
             $("#correctAnswer").html("<h2>The correct answer was Tarantula.</h2>");
         }
 
-        $("#gif").append('<img id="gifs" src=url("../images/tarantula.gif") />');
-        // var tarantula = url("../images/tarantula.gif");
-        // var gif1 = $("<img>").attr("src", tarantula);
-        // $("#gif").append(gif1);
-        // console.log(tarantula);
+        $("#gif").html("<img src='assets/images/tarantula.gif' />");
     }
+
+    // answerQuestion2: function() {
+
+    //     //  Display the question
+    //     $("#question").text(myObj.questions[1]);
+
+    //     //  Display the answsers
+    //     for(var i = 0; i < myObj.answers[1].length; i++) {
+    //         var answers2 = $("<button>");
+    //         answers2.addClass("answers");
+    //         answers2.text(myObj.answers[1][i]);
+    //         $("#answers").append(answers1);
+    //     }
+    // }
     
     
 };
     console.log(myObj.answerQuestion1());
     console.log(myObj.answers[0][2]);
-    console.log(myObj.answerKey[0]);
+    console.log(myObj.answerKey);
     
     
 
