@@ -1,0 +1,52 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: url("../images/background.jpg");
+    background-repeat: no-repeat;    
+}
+
+
+.panel {
+    margin: 180px 193px;
+    width: 73%;
+    background-color: #2e2c77;
+}
+
+#title {
+    width: 551px;
+    margin-left: 23px;
+}
+
+#trivia {
+    width: 178px;
+    margin-left: 15px;
+}
+
+.start {
+    width: 320px;
+    margin: 225px 0 125px 240px;
+    padding: 10px;
+    font-size: 30px;
+}
+
+#question {
+    text-align: center;
+    color: #ffffff;
+    font-size: 24px;
+    margin-top: 50px;
+}
+
+.answers {
+    width: 320px;
+    margin: 30px 0 0 240px;
+    padding: 10px;
+    font-size: 30px;
+}
+
+#outcome,
+#correctAnswer {
+    color: #ffffff;
+    text-align: center;
+}
