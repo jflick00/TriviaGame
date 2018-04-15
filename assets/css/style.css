@@ -46,7 +46,11 @@ body {
 }
 
 #outcome,
-#correctAnswer {
+#correctAnswer,
+#allDone,
+#finalCorrect,
+#finalIncorrect,
+#finalUnanswered {
     color: #ffffff;
     text-align: center;
 }
