@@ -7,55 +7,51 @@ body {
     background-repeat: no-repeat;    
 }
 
-
-.panel {
-    margin: 180px 193px;
-    width: 73%;
-    background-color: #2e2c77;
-}
-
-#title {
-    width: 551px;
-    margin-left: 23px;
-}
-
-#trivia {
-    width: 178px;
-    margin-left: 15px;
+.thumbnail {
+    margin: 21% 0;
+    background-color: #1d3d6b;
 }
 
 .start {
-    width: 320px;
-    margin: 150px 0 106px 240px;
+    width: 100%;
+    margin: 150px 0;
     padding: 10px;
     font-size: 30px;
 }
 
-#question {
+.startOver {
+    width: 100%;
+    margin: 45px 0;
+    padding: 10px;
+    font-size: 30px;
+}
+
+#question,
+#outcome {
     text-align: center;
     color: #ffffff;
     font-size: 24px;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 .answers {
-    width: 320px;
-    margin: 16px 0 0 240px;
+    width: 50%;
+    margin: 1% 26%;
     padding: 10px;
     font-size: 30px;
 }
 
-#outcome,
 #correctAnswer,
 #allDone,
 #finalCorrect,
 #finalIncorrect,
-#finalUnanswered {
+#finalUnanswered,
+#timeRemaining {
     color: #ffffff;
     text-align: center;
 }
 
-img {
-    width: 330px;
-    margin: 55px 0 40px 230px;
+.gif {
+    width: 350px;
+    margin: 55px 0;
 }

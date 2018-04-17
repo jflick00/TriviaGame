@@ -1,6 +1,9 @@
 //  Global Variables
 //============================================================================================
 
+var time = 30;
+var intervalId;
+
 var finalCorrect = 0;
 var finalIncorrect = 0;
 var finalUnanswered = 0;
@@ -16,10 +19,40 @@ function startGame() {
     $("#start").append(start);
     $("#question").empty();
     $("#answers").empty();
+    $("#timeRemaining").empty();
 }
 
 function setTimer() {
+    reset();
+    intervalId = setInterval(count, 1000);
+    $("#timeRemaining").html("<h1>Time Remaining: " + time + "</h1>");
+}
 
+function count() {
+    time--;
+    var converted = timeConverter(time);
+    $("#timeRemaining").text(converted);
+    clearInterval(intervalId);
+}
+  
+function timeConverter(t) {
+    var minutes = Math.floor(t / 60);
+    var seconds = t - (minutes * 60);
+
+    if (seconds < 10) {
+        seconds = "0" + seconds;
+    }
+    if (minutes === 0) {
+        minutes = "00";
+    }
+    else if (minutes < 10) {
+        minutes = "0" + minutes;
+    }
+    return minutes + ":" + seconds;
+}
+
+function reset() {
+time = 30;
 }
 
 var myObj = {
@@ -34,6 +67,9 @@ var myObj = {
     answerKey : ["Tarantula", "Old Man Marley", "Little Nero's", "Fuller", "Wet Bandits"],
     
     answerQuestion1: function() {
+
+        // Set the timer
+        setTimer();
 
         //  Display the question
         $("#question").text(myObj.questions[0]);
@@ -54,10 +90,11 @@ var myObj = {
             finalCorrect++;
         }
         
-        // else if (timer < 0) {
-        //     $("#outcome").html("<h1>Nope!</h1>");
-        //     finalUnanswered++;
-        // }
+        else if (time = 0) {
+            $("#outcome").html("<h1>Time Up!</h1>");
+            $("#correctAnswer").html("<h2>The correct answer was Tarantula.</h2>");
+            finalUnanswered++;
+        }
 
         else {
             $("#outcome").html("<h1>Nope!</h1>");
@@ -65,8 +102,11 @@ var myObj = {
             $("#correctAnswer").html("<h2>The correct answer was Tarantula.</h2>");
         }
 
+        //  Clear the timer
+        $("#timeRemaining").empty();
+
         //  Display the image
-        $("#gif").html("<img src='assets/images/tarantula.gif' />");
+        $("#gif").html("<img src='assets/images/tarantula.gif' class='gif' />");
 
         //  Change to next question
         setTimeout(this.answerQuestion2, 1000 * 5);
@@ -78,6 +118,9 @@ var myObj = {
         $("#outcome").empty();
         $("#correctAnswer").empty();
         $("#gif").empty();
+
+        // Set the timer
+        setTimer();
         
         //  Display the question
         $("#question").text(myObj.questions[1]);
@@ -106,11 +149,14 @@ var myObj = {
         else {
             $("#outcome").html("<h1>Nope!</h1>");
             finalIncorrect++;
-            $("#correctAnswer").html("<h2>The correct answer was Tarantula.</h2>");
+            $("#correctAnswer").html("<h2>The correct answer was Old Man Marley.</h2>");
         }
 
+        //  Clear the timer
+        $("#timeRemaining").empty();
+
         //  Display the image
-        $("#gif").html("<img src='assets/images/marley.gif' />");
+        $("#gif").html("<img src='assets/images/marley.gif' class='gif' />");
 
         //  Change to next question
         setTimeout(this.answerQuestion3, 1000 * 5);
@@ -122,6 +168,9 @@ var myObj = {
         $("#correctAnswer").empty();
         $("#gif").empty();
         
+        // Set the timer
+        setTimer();
+
         //  Display the question
         $("#question").text(myObj.questions[2]);
 
@@ -149,11 +198,14 @@ var myObj = {
         else {
             $("#outcome").html("<h1>Nope!</h1>");
             finalIncorrect++;
-            $("#correctAnswer").html("<h2>The correct answer was Tarantula.</h2>");
+            $("#correctAnswer").html("<h2>The correct answer was Little Nero's.</h2>");
         }
 
+        //  Clear the timer
+        $("#timeRemaining").empty();
+
         //  Display the image
-        $("#gif").html("<img src='assets/images/pizza.gif' />");
+        $("#gif").html("<img src='assets/images/pizza.gif' class='gif' />");
 
         //  Change to next question
         setTimeout(this.answerQuestion4, 1000 * 5);
@@ -165,6 +217,9 @@ var myObj = {
         $("#correctAnswer").empty();
         $("#gif").empty();
         
+        // Set the timer
+        setTimer();
+
         //  Display the question
         $("#question").text(myObj.questions[3]);
 
@@ -192,11 +247,14 @@ var myObj = {
         else {
             $("#outcome").html("<h1>Nope!</h1>");
             finalIncorrect++;
-            $("#correctAnswer").html("<h2>The correct answer was Tarantula.</h2>");
+            $("#correctAnswer").html("<h2>The correct answer was Fuller.</h2>");
         }
 
+        //  Clear the timer
+        $("#timeRemaining").empty();
+
         //  Display the image
-        $("#gif").html("<img src='assets/images/fuller.gif' />");
+        $("#gif").html("<img src='assets/images/fuller.gif' class='gif' />");
 
         //  Change to next question
         setTimeout(this.answerQuestion5, 1000 * 5);
@@ -208,6 +266,9 @@ var myObj = {
         $("#correctAnswer").empty();
         $("#gif").empty();
         
+        // Set the timer
+        setTimer();
+
         //  Display the question
         $("#question").text(myObj.questions[4]);
 
@@ -235,17 +296,21 @@ var myObj = {
         else {
             $("#outcome").html("<h1>Nope!</h1>");
             finalIncorrect++;
-            $("#correctAnswer").html("<h2>The correct answer was Tarantula.</h2>");
+            $("#correctAnswer").html("<h2>The correct answer was the Wet Bandits.</h2>");
         }
 
+        //  Clear the timer
+        $("#timeRemaining").empty();
+
         //  Display the image
-        $("#gif").html("<img src='assets/images/wetbandits.gif' />");
+        $("#gif").html("<img src='assets/images/wetbandits.gif' class='gif' />");
 
         //  Change to final score
         setTimeout(this.displayFinalScore, 1000 * 5);
     },
 
     displayFinalScore: function() {
+
         //  Clear the previous data
         $("#outcome").empty();
         $("#correctAnswer").empty();
@@ -258,7 +323,10 @@ var myObj = {
         $("#finalUnanswered").html("<h2>Unanswered: " + finalUnanswered + "</h2>");
 
         //  Restart the game
-        setTimeout(this.answerQuestion1, 1000 * 10);
+        var startover = $("<button>");
+        startover.addClass("startOver");
+        startover.text("Start Over?");
+        $("#startOver").append(startover);
     }
 };
     console.log(myObj.answerQuestion1());
@@ -274,6 +342,7 @@ startGame();
 $("#start").click(function() {
     $("#start").empty();
     myObj.answerQuestion1();
+    setTimer();
 });
 
 $("#answers").click(function() {
@@ -304,4 +373,13 @@ $("#answers5").click(function() {
     $("#question").empty();
     $("#answers5").empty();
     myObj.displayOutcome5();
+});
+
+$("#startOver").click(function() {
+    $("#startOver").empty();
+    $("#allDone").empty();
+    $("#finalCorrect").empty();
+    $("#finalIncorrect").empty();
+    $("#finalUnanswered").empty();
+    myObj.answerQuestion1();
 });
